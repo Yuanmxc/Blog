@@ -1,0 +1,203 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#FFF"><link rel="apple-touch-icon" sizes="180x180" href="//cdn.jsdelivr.net/gh/Yuanmxc/Blog@latest/images/apple-touch-icon.png"><link rel="icon" type="image/ico" sizes="32x32" href="//cdn.jsdelivr.net/gh/Yuanmxc/Blog@latest/images/favicon.ico"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="alternate" type="application/rss+xml" title="陌上尘归处" href="http://yuanmxc.site/rss.xml"><link rel="alternate" type="application/atom+xml" title="陌上尘归处" href="http://yuanmxc.site/atom.xml"><link rel="alternate" type="application/json" title="陌上尘归处" href="http://yuanmxc.site/feed.json"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext"><link rel="stylesheet" href="//cdn.jsdelivr.net/gh/Yuanmxc/Blog@latest/css/app.css?v=0.2.5"><link rel="canonical" href="http://yuanmxc.site/C++/C++%20Primer%E7%AC%94%E8%AE%B0/"><title>C++ Primer笔记 - C++ Primer笔记 | 陌上尘归处 = 陌上尘归处 = 人生无根蒂，飘如陌上尘</title><meta name="generator" content="Hexo 6.3.0"></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><h1 itemprop="name headline">C++ Primer笔记</h1><div class="meta"><span class="item" title="创建时间：2024-03-26 19:49:10"><span class="icon"><i class="ic i-calendar"></i> </span><span class="text">发表于</span> <time itemprop="dateCreated datePublished" datetime="2024-03-26T19:49:10+08:00">2024-03-26</time> </span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i> </span><span class="text">本文字数</span> <span>12k</span> <span class="text">字</span> </span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i> </span><span class="text">阅读时长</span> <span>11 分钟</span></span></div></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span> <span class="line"></span> <span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">陌上尘归处</a></li></ul><ul class="right"><li class="item theme"><i class="ic i-sun"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div id="imgs" class="pjax"><ul><li class="item" data-background-image="https://cdn.jsdelivr.net/gh/Yuanmxc/Picture@latest/BlogPictures/Background/p33.png"></li><li class="item" data-background-image="https://cdn.jsdelivr.net/gh/Yuanmxc/Picture@latest/BlogPictures/Background/p11.png"></li><li class="item" data-background-image="https://cdn.jsdelivr.net/gh/Yuanmxc/Picture@latest/BlogPictures/Background/p43.png"></li><li class="item" data-background-image="https://cdn.jsdelivr.net/gh/Yuanmxc/Picture@latest/BlogPictures/Background/p44.png"></li><li class="item" data-background-image="https://cdn.jsdelivr.net/gh/Yuanmxc/Picture@latest/BlogPictures/Background/p12.png"></li><li class="item" data-background-image="https://cdn.jsdelivr.net/gh/Yuanmxc/Picture@latest/BlogPictures/Background/p47.png"></li></ul></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"/></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"/><use xlink:href="#gentle-wave" x="48" y="3"/><use xlink:href="#gentle-wave" x="48" y="5"/><use xlink:href="#gentle-wave" x="48" y="7"/></g></svg></div><main><div class="inner"><div id="main" class="pjax"><div class="article wrap"><div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList"><i class="ic i-home"></i> <span><a href="/">首页</a></span><i class="ic i-angle-right"></i> <span class="current" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem"><a href="/categories/C-Primer%E7%AC%94%E8%AE%B0/" itemprop="item" rel="index" title="分类于 C++ Primer笔记"><span itemprop="name">C++ Primer笔记</span></a><meta itemprop="position" content="1"></span></div><article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN"><link itemprop="mainEntityOfPage" href="http://yuanmxc.site/C++/C++%20Primer%E7%AC%94%E8%AE%B0/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="image" content="//cdn.jsdelivr.net/gh/Yuanmxc/Blog@latest/images/avatar1.jpg"><meta itemprop="name" content="陌上尘"><meta itemprop="description" content="人生无根蒂，飘如陌上尘, 不乱于心，不困于情；不畏将来，不念过往。"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="陌上尘归处"></span><div class="body md" itemprop="articleBody"><p>注意：本文并不是教你学 C++，这只是笔者学习 C<ins> 过程中记录的相关知识，适用于已经对 C</ins> 有所了解的读者进行复习和查询，读者至少对 C 和 C++ 有所了解。</p><h2 id="小记"><a class="anchor" href="#小记">#</a> 小记：</h2><ol><li><p>有符号和无符号一起用，有符号转无符号。</p></li><li><p>double（一般 16 有效位）一般和 float（一般 7 有效位）运算代价相同，用 double 即可。</p></li><li><p>char16_t 和 char32_t 为 Unicode 字符，包含所有自然语言字符。</p></li><li><p>泛化的转义序列： <code>\x</code> 后跟 1 或多个十六进制数字或者 <code>\</code> 后跟多个八进制数字： <code>\12</code> （换行符） <code>\x4d</code> （字符 M）</p></li><li><p>初始化不是赋值，定义变量时若未指定初始值，变量被<strong>默认初始化</strong>，“默认值” 由变量类型和定义位置决定。定义在任何函数体之外的内置类型变量会被默认初始化为 0，定义在函数体内部的内置类型变量不被初始化，它的值是未定义的。每个类各自决定初始化对象的方式。</p></li><li><p>声明使得名字为程序所知，定义负责创建于名字关联的实体。变量能且只能被定义一次，但是可以被多次声明。任何包含了显式初始化的声明即成为定义。多个文件使用同一变量，只能有一个定义，其他文件必须声明才能使用，决不能定义该变量。</p><pre><code class="language-c++">extern int i；  // 声明i而非定义i
+int j；         // 声明并定义j
+extern double pi = 3.1415926； // 定义，extern作用被抵消
+</code></pre></li><li><p>引用只是一个已经存在的对象的另一个名字，它和它的初始值（一个对象）一直绑定在一起，必须被初始化。对引用的操作就是对于它绑定的对象的操作（可以视为替换）。引用本身不是对象，无法定义引用的引用和指针。</p><pre><code class="language-c++">int ival = 1024;
+int &amp;refVal = ival;
+refVal = 2;
+</code></pre></li><li><p><code>::</code> 作用域运算符，使用 <code>::reuserd</code> 的方式可以访问被局部变量覆盖的全局变量，全局作用域本身没有名字，所以 <code>::</code> 左侧为空时会向全局作用域发起请求。</p></li><li><p>把 int 变量直接赋给指针是错误的操作，即使他的值为 0。</p></li><li><p>对指针的引用：</p></li></ol><pre><code class="language-c++">int i = 21;
+int *p;
+int *&amp;r = p;
+r = &amp;i;  // 令p指向i
+*r = 0;  // 将p指向的变量i的值改为0
+</code></pre><ol start="11"><li><ul><li><p>当以编译时初始化的方式定义一个 const 对象时，例如： <code>const int bufSize = 512;</code> ，编译器会将在编译过程中用到该变量的地方都替换成对应的值。</p></li><li><p>默认状态下，const 对象被设定为仅在文件内有效。当多个文件中出现同名 const 变量时，等同于在不同文件中分别定义了独立的变量</p></li><li><p>当希望 const 变量初始值不是常量表达式，但需要在文件间共享，即和其他对象一样，只在一个地方定义 const 变量，而在其他多个文件中声明并使用它，则不管是声明还是定义都添加 extern 关键字，这样只需要定义一次就可以了。</p><pre><code class="language-c++">// file_1.cc 定义并初始化了一个常量，该常量能被其他文件访问
+extern const int bufSize = fcn();
+// file_1.h 头文件
+extern const int bufSize;  // 与file_1.cc 中定义的bufSize是同一个
+</code></pre></li></ul></li><li><p>对 const 对象的引用称之为对常量的引用（<strong>常量引用</strong>）。不能让一个非常量引用指向一个常量对象。</p></li><li><p>一般来说引用的类型应该与其所引用的对象的类型一致，但有下面两个例外：</p><ul><li><p>对 const 的引用可能引用一个并非 const 的对象。</p><pre><code class="language-c++">int i = 42;
+int &amp;r1 = i;
+const int &amp;r2 = i; // r2绑定对象i但是不允许通过r2修改i的值。
+</code></pre></li><li><p>初始化常量引用时允许使用任意表达式作为初始值，只要该表达式的结果能转换成引用的类型即可，尤其，允许为一个常量引用绑定非常量的对象、字面值，甚至是一个表达式：</p><pre><code class="language-c++">double i = 3.14;
+const int &amp;r1 = i;      // 正确，double可以转换成int，常量引用可以绑定非常量对象
+const int &amp;r2 = 42;     // 正确：r2是一个常量引用，可以绑定字面值
+const int &amp;r3 = r1 * 2; // 正确：r3是一个常量引用，可以绑定表达式
+int &amp;r4 = r1 *2         // 错误：r4是一个普通的非常量引用
+</code></pre><p>以上面第 1、2 行代码为例，当一个常量引用被绑定到另一种类型上时，编译器把 i 转化一个整形常量 3，这个 3 是一个临时量对象，是编译器需要的一个用来暂存表达式求值结果时临时创建的一个未命名的对象。</p></li></ul></li><li><p>一般来说指针的类型应该与其所指对象的类型一致，但有下面两个例外：</p><ul><li>允许一个指向常量的指针指向另一个非常量的对象。</li><li>常量指针可以指向非常量对象。</li></ul></li><li><p><strong>顶层 const</strong> 表示指针本身是一个常量，<strong>底层 const</strong> 表示指针所值的对象是一个常量。当执行对象的拷贝操作时，拷入和拷出的对象必须具有相同的底层 const 资格，或者两个对象的数据类型必须能够转换，一般来说，非常量可以转换成常量，反之则不行。</p></li><li><p>将变量声明为 constexptr 类型，让编译器来验证变量的值是否是一个常量表达式（值不会改变且在编译过程就能得到计算结果的表达式）。</p><pre><code class="language-c++">constexpr =int mf = 20;
+</code></pre></li><li><p>定义类型别名：</p><pre><code class="language-c++">typedef double wages;    // wages是double的同义词
+typedef wasges base, *p; // base是double的同义词，p是double*的同义词
+using SI = Sales_item;   // SI是Sales_item的同义词
+</code></pre></li><li><p>简单的把类型别名替换成它原本样子可能是错误的，后两句如果进行简单的文本替换，基本数据类型变为 const char .</p><pre><code class="language-c++">const char *cstr = 0; // 声明的是一个指向 const char 的指针
+typedef char *pstring;  // pstring的类型是指向char的指针
+const pstring cstr = 0; // cstr是指向char的常量指针
+const pstring *ps;      // ps是一个指针，他指向的对象是一个指向char的常量指针
+</code></pre></li><li><p>auto 一般会忽略掉<strong>顶层 const</strong> ，同时<strong>底层 const</strong> 会被保留。想保留，需要用 const atuo 。设置一个类型为 auto 的引用时，初始值中的顶层常量属性仍然被保留。</p></li><li><p>decltype ( ) 返回（）中表达式的类型。如果 decltype 使用的表达式是一个变量，则 decltype 返回该变量的类型（包括顶层 const 和引用在内）。如果表达式的内容是解引用操作，则 decltype 将得到引用类型。decltype 使用的表达式是变量，该变量是否有括号会影响结果，如果无括号，得到的类型是该变量的类型，如果有括号，得到的是该变量对应的引用类型。</p><pre><code class="language-c++">decltype (f()) sum = x; // sum的类型就是函数f的返回类型，编译器并不实际调用f()
+// decltype的结果可以是引用类型
+int i = 42, *p = &amp;i, &amp;r = i;
+decltype(r + 0） b; // 正确：加法的结果是int,因此b是一个(未初始化的)int
+decltype(*p) c;     // 错误：*p的类型是int，但他是解引用操作，所以c的类型是int&amp;,必须初始化
+decltype((i)) d;    // 错误：使用(i)得到的是 int&amp; 类型，必须初始化
+</code></pre></li><li><p>头文件保护符 <code>#ifndef</code> 、 <code>#ifdef</code> 、 <code>#endif</code> 应该包含在头文件中，即使头文件（目前还）没有被包含在任何其他头文件中。头文件不应该使用 using 声明。</p></li><li><p>string 字符串使用字符串字面值初始化时，不包含字符串字面值最后隐藏的空字符，字符串字面值实际上包含写出来的字符和隐藏的空字符。</p></li><li><p>cin 在读取 string 时，string 对象会自动忽略开头的空白（空格符、换行符、制表符等），并从第一个真正的字符开始读起，直到遇见下一次处空白为止。</p></li><li><p><code>getline(cin, line)</code> 读取一整行，参数是一个输入流和一个 string 对象，函数从输入流中读入内容，直到遇到换行符为止（换行符也被读进来了），然后把所读的对象存入到 string 对象中（但是不存读入的换行符）。如果一开始就输入换行符，那么得到空 string。触发 getline 函数返回的换行符实际上被丢掉了。</p></li><li><p>sting 操作中的 size () 等函数，返回的数字类型配套的， <code>size()</code> 返回 <code>string:: size_type</code> 类型，一个无符号整型，使用 <code>auto</code> 或者 <code>decltype()</code> 推断变量类型来存比较好。注意无符号整型和有符号整型混用的问题。</p></li><li><p>string 比较规则：返回两个 string 对象第一个不同字符的比较结果，若全相同，则长的大。</p></li><li><p>当把 string 对象和字符字面值及字符串字面值混在一条语句中使用时，必须确保每个加法运算符的两侧的运算对象至少有一个是 string，字符串字面值不是 string 对象。</p></li><li><p>string 的下标运算符接收的参数是 string::size_type 类型的值，返回值是该位置上字符的引用。在范围 for 语句中也需要使用引用来修改 string 中的字符，使用 char 的话没有改变原 string 对象。</p></li><li><p><strong>string</strong>：</p><pre><code class="language-c++">// 初始化
+string s1;                    // 默认初始化，空字符串
+string s2 = &quot;&quot;;               // 拷贝初始化，空字符串
+string s3 = &quot;hello&quot;;          // 拷贝初始化
+string s4(&quot;world&quot;);           // 拷贝初始化，使用构造函数定义并初始化字符串
+string s5(10,'c');            // 直接初始化，是十个c的字符串
+string s6 = string(10,'c')    // 拷贝初始化，创建了一个临时对象然后拷贝给s6
+// 成员函数
+s[n]          // 返回n位置上的字符的引用
+s.empty()     // s是否为空，空为真，不空为假
+s.length()    // 或者 s.size()，返回s中字符个数
+s.at(n);      // 返回下标为n的字符
+s.find(&quot;ld&quot;); // 返回 &quot;ld&quot; 在字符串中的位置n
+s.replace(6, 5, &quot;there&quot;);     // 把 &quot;world&quot; 替换成 &quot;there&quot;
+s.substr(0, 5); // 返回i字符串的前5个字符组成的字符串
+s.substr(6);    // 返回从字符串的第7个字符到末尾的字符组成的字符串
+s.insert(6, &quot;there&quot;);         // 在下标为6的位置插入there“，后面字符顺延
+s.insert(6, 1, '-');          // 在第6个位置插入 '-'，后面字符顺延
+</code></pre></li><li><p>使用花括号初始化 vector 对象时，会优先使用列表初始化，提供的值必须与元素类型相同，如果不同，无法执行列表初始化，编译器会尝试使用默认初始化 vector 对象。</p></li><li><p>一般创建一个空的 vector ，再向里面添加元素更好，直接初始化可能性能更差，同时，如果改变了 vector 容量，不应使用范围 for 循环，范围 for 语句内不应该改变其所遍历序列的大小。不能使用下标形式为 vector 添加元素，只能对已存在的元素执行下标操作。</p></li><li><p>** 类模板 vector **：</p><p>vector 定义在头文件中，需要包含，并位于 std 命名空间中。</p><pre><code class="language-c++">vector&lt;double&gt; v;      // 创建空容器
+vector&lt;string&gt; v1&#123;10&#125;; // 10不是string，使用默认初始化，初始化有10个string的vectoer
+vector&lt;double&gt; v(20， 1.0); // 直接初始化有20个double的vectoe，初始值均为1.0,没有第二个参数初始值默认均为0，使用花括号也可
+vector&lt;int&gt; values2&#123;1,2,3,4,2,1&#125;; // 指定元素个数和初始值
+vector&lt;int&gt; values3(values2);  // 创建和alces相同的容器
+vector&lt;int&gt; values4(begin(value2,begin(v。alue2)+3)) // 使用指针或者迭代器来指定初始值范
+</code></pre><p>vector 容器包含的成员函数：</p><pre><code class="language-c++">begin()	    // 返回指向容器中第一个元素的迭代器。
+end()	    // 返回指向容器最后一个元素所在位置后一个位置的迭代器。
+front()	    // 返回第一个元素的引用。
+back()	    // 返回最后一个元素的引用。
+data()	    // 返回指向容器中第一个元素的指针。
+assign()    // 用新元素替换原有内容。
+push_back()	// 在序列的尾部添加一个元素。
+pop_back()	// 移出序列尾部的元素。
+insert()	// 在指定的位置插入一个或多个元素。
+erase()	    // 移出一个元素或一段元素。
+clear()	    // 移出所有的元素，容器大小变为 0。
+rbegin()  // 返回指向最后一个元素的迭代器。
+rend()	  // 返回指向第一个元素所在位置前一个位置的迭代器。
+cbegin()  // 和 begin() 功能相同，只不过在其基础上，增加了 const 属性，不能用于修改元素。
+cend()	  // 和 end() 功能相同，只不过在其基础上，增加了 const 属性，不能用于修改元素。
+crbegin() // 和 rbegin() 功能相同，只不过在其基础上，增加了 const 属性，不能用于修改元素。
+crend()	  // 和 rend() 功能相同，只不过在其基础上，增加了 const 属性，不能用于修改元素。
+size()	  // 返回实际元素个数 类型是vector&lt;T&gt;::size_type，T为vector存储的元素类型。
+max_size()// 返回元素个数的最大值。这通常是一个很大的值，一般是 2^32-1，所以我们很少会用到这个函数。
+resize()  // 改变实际元素的个数。
+capacity()// 返回当前容量。
+empty()	  // 判断容器中是否有元素，若无元素，则返回 true；反之，返回 false。
+reserve() // 增加容器的容量。
+shrink _to_fit()  // 将内存减少到等于当前元素实际所使用的大小。
+operator[ ]	      // 重载了 [ ] 运算符，可以向访问数组中元素那样，通过下标即可访问甚至修改 vector 容器中的元素。
+at()	        // 使用经过边界检查的索引访问元素。
+swap()	        // 交换两个容器的所有元素。
+emplace()	    // 在指定的位置直接生成一个元素。
+emplace_back()	// 在序列尾部生成一个元素。
+</code></pre></li><li><p>如果容器为空，begin 和 end 都返回尾后迭代器。</p></li><li><p>标准容器迭代器的部分运算符：</p><pre><code class="language-c++">*it            // 返回迭代器it所指元素的引用
+(*it).empty()  // it指示一个strng类型并判断string是否为空，必须加()，否则先进行点运算
+it-&gt;empty()    // 解引用it并获取该元素的名为mem的成员，等价于(*it).empty()
+++it           // 令it指示容器中的下一个元素
+--it           // 令it指示容器中的上一个元素
+it1 == it2     // 判断两个选代器是否相等，如果两个选代器指示的是同一个元素或者它们是同一个容器的尾后选代器，则相等；反之，不相等
++、-、+=、-=、&lt;、&gt;、&lt;=、&gt;=
+</code></pre></li><li><p>某些对 vector 的操作（任何可能改变 vertor 对象容量的操作）会使迭代器失效，比如 push_back，不能在范围 for 循环中向 vector 对象添加元素。</p></li><li><p>使用迭代器的二分搜索：</p><pre><code class="language-c++">// text必须是有序的
+// beg和end表示我们搜索的范围
+auto beg = text.begin(), end=text.end();
+auto mid = text.begin() + (end-beg)/2; // 初始状态下的中间点
+// 当还有元素尚未检查并且我们还没有找到sought时执行循环
+while(mid != end &amp;&amp; *mid != sought)
+     if (sought &lt; *mid)        // 如果要找的元素在前半部分
+         end = mid;            // 新end为旧mid，beg不变
+      else                     // 否则，我们要找的元素在后半部分
+         beg = mid + 1         // 新beg为旧mid+1，end不变
+     mid = beg + (end-beg)/2；  // 同样方法计算新的中间点
+</code></pre></li><li><p>数组的维度（元素个数）必须是常量表达式。默认情况下数据元素北默认初始化。字符数组使用字符串字面值初始化时，后面隐藏的 '\0' 会被包含进去，空间不够时报错。数组不允许拷贝和赋值。</p></li><li><p>数组本身是对象，存放对象，不存在引用的数组，但存在数组的引用。</p><pre><code class="language-c++">unsigned cnt = 42;         //不是常量表达式
+constexpr unsigned sz = 42;//常量表达式
+int *parr[sz];             //含有42个整型指针的数组
+string bad[cnt];;          //错误：cnt不是常量表达式
+string strs[get_size()];   //当get_size是constexpr时正确；否则错误
+</code></pre></li><li><p>当数组作为一个 auto 变量的初始值时，推断得到的类型是指针而非数组；使用 decltype 关键字时返回的类型是数组。</p></li><li><p>标准库函数 begin () 和 end () 获取数组的首元素指针和尾元素下一指针。两个指针相减的结果类型是 ptrdiff_t 的标准库类型，是带符号类型。如果两个指针分别指向不相关的对象，不能比较他们，未定义行为。</p></li><li><p>使用数组下标等同于使用指针，同时内置的下标运算（数组下标）可以处理负值，但标准库类型 string 和 vector 的下标运算必须是无符号类型。</p></li><li><p>尽量少使用 C 风格字符串，内存管理麻烦，多用 string，string 的成员函数 c_str () 可以把 string 转化成 char*。</p></li><li><p>数组无法拷贝和赋值，不能用 vector 初始化数组，但可以用数组初始化 vector ，只需之名拷贝区域的首元素地址和尾后地址：</p><pre><code class="language-c++">int int_arr[] = &#123;0, 1, 2, 3, 4, 5&#125;；
+// ivec有6个元素，分别是intarr中对应元素的副本
+vector&lt;int&gt; ivec(begin(int_arr）,end(int_arr))；
+</code></pre></li><li><p>当一个对象被用作右值的时候，用的是对象的值（内容）；当对象被用作左值的时候，用的是对象的身份（在内存中的位置）。</p></li></ol><h3 id="运算符"><a class="anchor" href="#运算符">#</a> 运算符</h3><ol start="45"><li><p>有 4 种运算符明确规定了运算对象的求值顺序。逻辑与（&amp;&amp;）运算符和逻辑或（||）运算符规定先求左侧运算对象的值，只有当左侧运算对象的值为真 / 假时才继续求右侧运算对象的值。条件（ ?: ）运算符和逗号（ , ）运算符。其他运算符，如 + 、&gt;&gt; 等未规定左右运算对象的求值顺序，先求左右表达式中的哪一个都有可能。如果表达式影响同一对象，求值先后顺序对结果有影响，那么它是一个错误的表达式，将产生未定义行为。</p></li><li><p>布尔值不应该参与运算，大多数运算符会把布尔值提升为 int 类型，true 为 1，求负后为 -1 ，再转回布尔值时仍为 1 ，还是 true。</p></li><li><p>求商向 0 取整（直接切除小数部分）。取余时，除了 -m 导致溢出的情况，m % (-n) 等于 m % n，( -m ) % n 等于 -( m % n )，即左右都为负，结果是两个正数取余后结果取反，一正一负，结果等于两个正数取余。</p></li><li><p>位运算符的运算对象是 “小整数”，它的值会被自动提升成较大的整数类型”，如何处理负数对象的 “符号位” 依赖于机器，而且此时的左移操作可能会改变符号位的值，因此是一种未定义的行为。左移在右侧插入 0。右移时，无符号类型左侧插入 0，带符号类型插入符号位的副本或者值为 0 的二进制位，如何选择视具体情况而定。</p></li><li><p>sizeof 运算符对解引用指针进行运算不会验证指针是否有效，对指针进行运算返回指针本身所占空间大小，对数组返回整个数组所占空间大小。对 sring 或者 vector 运算返回该类型固定部分的大小。sizeof 返回值是一个常量表达式。</p></li><li><p>逗号（ , ）运算符按照从左向右的顺序求值，运算结果是右侧表达式的值。</p></li><li><p>无符号和有符号数一起运算时，无符号类型所占位数大于等于有符号类型，则有符号类型转为无符号类型；如果无符号类型所占位数小于有符号类型，比如 long 和 unsigned int （ long 大于 int 时），则 unsigned int 转为 long</p></li><li><p>命名的强制类型转换具有如下形式： <code>cast-name(expression）</code> ，static_cast 是一种只要类型不包含底层 const 都可用。const_cast 只能改变运算对象的底层 const， 不能进行类型转换。</p></li><li><p>switch case 语句中，后面的 case 标签可以使用前面的 case 标签定义过的变量，但是该变量的初始化无效（如果前 case 标签被跳过的话），包括类似 string 的默认初始化。即：不允许跨过变量的初始化语句直接跳转到该变量作用域内的另一个位置。</p></li></ol><h3 id="常用函数"><a class="anchor" href="#常用函数">#</a> 常用函数</h3><pre><code class="language-c++">// cctype 头文件中的函数
+isalnur(c)  // 当c是字母或数字时为真
+isalpha(c)  // 当c是字母时为真
+iscntrl(n)  // 当c是控制字符时为真
+isdigit(c)  // 当c是数字时为真
+isgraph(c)  // 当c不是空格但可打印时为真
+islower(c)  // 当c是小写字母时为真
+isprint(c)  // 当c是可打印字符时为真(即c是空格或c具有可视形式)
+ispunct(c)  // 当c是标点符号时为真(即c不是控制字符、数字、字母、可打印空白中的一种)
+isspace(c)  // 当c是空白时为真(即c是空格、横向制表符、纵向制表符、回车符、换行符、进纸符中的一种)
+isupper(c)  // 当c是大写字母时为真
+isxdigit(c) // 当c是十六进制数字时为其
+tolower(c)  // 如果c是大写字母,输出对应的小写字母:否则原样输出c
+toupper(c)  // 如果c是小写字母,输出对应的大写字母:否则原样输出c
+</code></pre><h3 id="头文件"><a class="anchor" href="#头文件">#</a> 头文件:</h3><pre><code class="language-C++">#include &lt;initializer_list&gt;
+#include &lt;iostream&gt;
+#include &lt;istream&gt;
+#include &lt;ostream&gt;
+#include &lt;stdexcept&gt;
+#include &lt;string&gt;
+#include &lt;cstdarg&gt;   // 使用va_list可变参数列表
+#include &lt;system_error&gt;
+#include &lt;vector&gt;    // 使用vector容器
+#include &lt;string&gt;
+#include &lt;cstdlib&gt;   // 预处理变量NULL
+#include &lt;cctype&gt;    // 使用nullptr，isalnum()，isalpha()等
+#include &lt;cstddef&gt;   // 使用size_t,ptrdiff_t
+#include &lt;iterator&gt;  // 使用begin(),end()
+#include &lt;stdexcept&gt; // 异常类，如runtime_error,p176
+</code></pre><h3 id="全局区"><a class="anchor" href="#全局区">#</a> 全局区</h3><pre><code class="language-c++">#include &lt;cassert&gt;  // assert,预处理宏
+using std::cin;     // using声明，当我们使用cin时，意味着使用的std::cin
+using namespace std;// 头文件内容会拷贝到所有引用他的文件里，一般不应包含using声明（易造成名字冲突）
+
+// 如果定义了预处理变量MIN,就继续到#endif，#indef和#indef叫预处理百年
+#ifdef MIN
+#define MKSTR(x) #x       // &quot;x&quot;
+#endif
+
+// 如果没有定义预处理变量MIN,就继续到#endif，一般头文件的预处理变量定义都需要这样写
+#ifndef MIN   
+#define MIN(a, b) (a &lt; b ? a : b)
+#define concat(a, B) a##b // xy
+#define NDEBUG // 定了他 assert什么都不做，没定义则指执行运行时检查
+#endif
+
+extern const int i = 123; // a文件里定义并初始化i，加extern使其能被其他文件使用
+</code></pre><h3 id="数据结构"><a class="anchor" href="#数据结构">#</a> 数据结构</h3><ol><li><p>stack 容器</p><p>头文件，c 在 std 命名空间。stack 容器适配器的模板有两个参数。第一个参数是存储对象的类型，第二个参数是底层容器的类型。stack 的底层容器默认是 deque 容器，因此模板类型其实是 stack。通过指定第二个模板类型参数，可以使用任意类型的底层容器，只要它们支持 back ()、push_back ()、pop_back ()、empty ()、size () 这些操作。下面展示了如何定义一个使用 list 的堆栈：</p><pre><code class="language-c++">stack&lt;string&gt; words1;   // 省略第一个参数，用默认的底层容器deque&lt;T&gt;实现
+stack&lt;string, list&lt;string&gt;&gt; words2  // 底层容器使用list&lt;T&gt;
+</code></pre><p>创建堆栈时，不能用对象来初始化，但是可以用另一个容器来初始化，只要堆栈的底层容器类型和这个容器的类型相同，且必须使用圆括号。例如：</p><pre><code class="language-c++">list&lt;double&gt; values &#123;1.414, 3.14159265, 2.71828&#125;;
+stack&lt;double, list&lt;double&gt;&gt; my_stack (values);
+</code></pre><p>第二条语句生成了一个包含 value 元素副本的 my_stack。这里不能在 stack 构造函数中使用初始化列表，必须使用圆括号。如果没有在第二个 stack 模板类型参数中将底层容器指定为 list，那么底层容器可能是 deque，这样就不能用 list 的内容来初始化 stack；只能接受 deque。</p><p>stack 模板定义了拷贝构造函数，因而可以复制现有的 stack 容器：</p></li></ol><pre><code class="language-c++">stack copy_stack &#123;my_stack&#125;
+</code></pre><p>堆栈操作：(T 为栈中元素类型)</p><ul><li><p>push (const T&amp; obj) 可以将对象副本压入栈顶。这是通过调用底层容器的 push_back () 函数完成的。</p><ul><li>pop () 弹出栈顶元素但没有返回它。</li></ul></li><li><p>top () 返回一个栈顶元素的引用但没有弹出，类型为 T&amp;。如果栈为空，返回值未定义。</p><ul><li><p>size () 返回栈中元素的个数。</p></li><li><p>empty () 在栈中没有元素的情况下返回 true。</p></li><li><p>emplace () 用传入的参数调用构造函数，在栈顶生成对象。</p></li><li><p>swap (stack &amp; other_stack) 将当前栈中的元素和参数中的元素交换。参数所包含元素的类型必须和当前栈的相同。对于 stack 对象有一个特例化的全局函数 swap () 可以使用。</p></li></ul></li></ul><ol start="2"><li><p>类模板</p><p>vector 定义在头文件中，需要包含，并位于 std 命名空间中。</p><pre><code class="language-c++">vector&lt;double&gt; values;   // 创建空容器
+vector&lt;double&gt; values1(20， 1.0); // 开始就有20个int,初始值均为1.0,没有第二个参数初始值默认均为0
+vector&lt;int&gt; values2&#123;1,2,3,4,2,1&#125;; // 指定元素个数和初始值
+vector&lt;int&gt; values3(values2);  // 创建和alces相同的容器
+vector&lt;int&gt; values4(begin(value2,begin(v。alue2)+3)) // 使用指针或者迭代器来指定初始值范围
+</code></pre><p>vector 容器包含的成员函数：</p><pre><code class="language-c++">begin()	    // 返回指向容器中第一个元素的迭代器。
+end()	    // 返回指向容器最后一个元素所在位置后一个位置的迭代器。
+front()	    // 返回第一个元素的引用。
+back()	    // 返回最后一个元素的引用。
+data()	    // 返回指向容器中第一个元素的指针。
+assign()    // 用新元素替换原有内容。
+push_back()	// 在序列的尾部添加一个元素。
+pop_back()	// 移出序列尾部的元素。
+insert()	// 在指定的位置插入一个或多个元素。
+erase()	    // 移出一个元素或一段元素。
+clear()	    // 移出所有的元素，容器大小变为 0。
+rbegin()  // 返回指向最后一个元素的迭代器。
+rend()	  // 返回指向第一个元素所在位置前一个位置的迭代器。
+cbegin()  // 和 begin() 功能相同，只不过在其基础上，增加了 const 属性，不能用于修改元素。
+cend()	  // 和 end() 功能相同，只不过在其基础上，增加了 const 属性，不能用于修改元素。
+crbegin() // 和 rbegin() 功能相同，只不过在其基础上，增加了 const 属性，不能用于修改元素。
+crend()	  // 和 rend() 功能相同，只不过在其基础上，增加了 const 属性，不能用于修改元素。
+size()	  // 返回实际元素个数。
+max_size()// 返回元素个数的最大值。这通常是一个很大的值，一般是 2^32-1，所以我们很少会用到这个函数。
+resize()  // 改变实际元素的个数。
+capacity()// 返回当前容量。
+empty()	  // 判断容器中是否有元素，若无元素，则返回 true；反之，返回 false。
+reserve() // 增加容器的容量。
+shrink _to_fit()  // 将内存减少到等于当前元素实际所使用的大小。
+operator[ ]	      // 重载了 [ ] 运算符，可以向访问数组中元素那样，通过下标即可访问甚至修改 vector 容器中的元素。
+at()	        // 使用经过边界检查的索引访问元素。
+swap()	        // 交换两个容器的所有元素。
+emplace()	    // 在指定的位置直接生成一个元素。
+emplace_back()	// 在序列尾部生成一个元素。
+</code></pre></li><li><p>哈希表</p><p>头文件 <code>&lt;unordered_map&gt;</code> ，在 std 名命名空间中。它将数据存储为键值对，其中键是唯一的。 声明和初始化：</p><pre><code class="language-c++">unordered_map&lt;string, int&gt; map1
+</code></pre></li></ol></div><footer><div class="meta"><span id="C++/C++ Primer笔记/" class="item leancloud_visitors" data-flag-title="C++ Primer笔记" title="阅读次数"><span class="icon"><i class="ic i-eye"></i> </span><span class="text">阅读次数</span> <span class="leancloud-visitors-count"></span> <span class="text">次</span></span></div><div id="copyright"><ul><li class="author"><strong>本文作者： </strong>陌上尘 <i class="ic i-at"><em>@</em></i>陌上尘归处</li><li class="link"><strong>本文链接：</strong> <a href="http://yuanmxc.site/C++/C++%20Primer%E7%AC%94%E8%AE%B0/" title="C++ Primer笔记">http://yuanmxc.site/C++/C++ Primer笔记/</a></li><li class="license"><strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li></ul></div></footer></article></div><div class="post-nav"><div class="item left"><a href="/%E4%B8%8D%E6%88%90%E6%96%87/SQL/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;Yuanmxc&#x2F;Picture@latest&#x2F;BlogPictures&#x2F;Background&#x2F;p4.png" title="SQL"><span class="type">上一篇</span> <span class="category"><i class="ic i-flag"></i> 不成文</span><h3>SQL</h3></a></div><div class="item right"><a href="/Archlinux/ArchLinux%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;cdn.jsdelivr.net&#x2F;gh&#x2F;Yuanmxc&#x2F;Picture@latest&#x2F;BlogPictures&#x2F;Background&#x2F;p13.png" title="ArchLinux使用记录"><span class="type">下一篇</span> <span class="category"><i class="ic i-flag"></i> ArchLinux</span><h3>ArchLinux使用记录</h3></a></div></div><div class="wrap" id="comments"></div></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B0%8F%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text">小记：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">1.1.</span> <span class="toc-text">运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.</span> <span class="toc-text">常用函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="toc-number">1.3.</span> <span class="toc-text">头文件:</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%A8%E5%B1%80%E5%8C%BA"><span class="toc-number">1.4.</span> <span class="toc-text">全局区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-number">1.5.</span> <span class="toc-text">数据结构</span></a></li></ol></li></ol></div><div class="related panel pjax" data-title="系列文章"><ul><li class="active"><a href="/C++/C++%20Primer%E7%AC%94%E8%AE%B0/" rel="bookmark" title="C++ Primer笔记">C++ Primer笔记</a></li></ul></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person"><img class="image" itemprop="image" alt="陌上尘" data-src="//cdn.jsdelivr.net/gh/Yuanmxc/Blog@latest/images/avatar1.jpg"><p class="name" itemprop="name">陌上尘</p><div class="description" itemprop="description">不乱于心，不困于情；不畏将来，不念过往。</div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">14</span> <span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">7</span> <span class="name">分类</span></a></div></nav><div class="social"><span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL1l1YW5teGM=" title="https:&#x2F;&#x2F;github.com&#x2F;Yuanmxc"><i class="ic i-github"></i></span></div><ul class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li><li class="item"><a href="/about/" rel="section"><i class="ic i-user"></i>关于</a></li><li class="item dropdown"><a href="javascript:void(0);"><i class="ic i-feather"></i>文章</a><ul class="submenu"><li class="item"><a href="/archives/" rel="section"><i class="ic i-list-alt"></i>归档</a></li><li class="item"><a href="/categories/" rel="section"><i class="ic i-th"></i>分类</a></li></ul></li><li class="item dropdown"><a href="javascript:void(0);"><i class="ic i-feather"></i>链环</a><ul class="submenu"><li class="item"><a href="/friends/" rel="section"><i class="ic i-heart"></i>友链</a></li><li class="item"><a href="/webstack/" rel="section"><i class="ic i-star"></i>网址</a></li></ul></li></ul></div></div></div><ul id="quick"><li class="prev pjax"><a href="/%E4%B8%8D%E6%88%90%E6%96%87/SQL/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"><a href="/Archlinux/ArchLinux%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"><a href="/categories/note/" title="分类于 笔记">笔记</a></div><span><a href="/%E7%AC%94%E8%AE%B0/Linux_coding/" title="Linux_coding">Linux_coding</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/note/" title="分类于 笔记">笔记</a></div><span><a href="/%E7%AC%94%E8%AE%B0/Csapp_note/" title="Csapp_note">Csapp_note</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/note/" title="分类于 笔记">笔记</a></div><span><a href="/%E7%AC%94%E8%AE%B0/CMake%E5%AD%A6%E4%B9%A0/" title="CMake学习">CMake学习</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/written/" title="分类于 成文">成文</a></div><span><a href="/%E6%88%90%E6%96%87/TCP%E7%9A%84%E5%8F%AF%E9%9D%A0%E6%95%B0%E6%8D%AE%E4%BC%A0%E8%BE%93/" title="TCP的可靠数据传输">TCP的可靠数据传输</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/C-Primer%E7%AC%94%E8%AE%B0/" title="分类于 C++ Primer笔记">C++ Primer笔记</a></div><span><a href="/C++/C++%20Primer%E7%AC%94%E8%AE%B0/" title="C++ Primer笔记">C++ Primer笔记</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/Data-structures-algorithms/" title="分类于 数据结构和算法">数据结构和算法</a></div><span><a href="/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/%E7%AE%97%E6%B3%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="算法学习笔记">算法学习笔记</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/essay/" title="分类于 随笔">随笔</a></div><span><a href="/%E9%9A%8F%E7%AC%94/%E7%AC%AC%E4%B8%80%E6%AC%A1%E9%9A%8F%E7%AC%94/" title="第一次随笔">第一次随笔</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/note/" title="分类于 笔记">笔记</a></div><span><a href="/%E7%AC%94%E8%AE%B0/Git%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" title="Git使用笔记">Git使用笔记</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/unwritten/" title="分类于 不成文">不成文</a></div><span><a href="/%E4%B8%8D%E6%88%90%E6%96%87/%E9%9A%8F%E8%AE%B0/" title="随记">随记</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/ArchLinux/" title="分类于 ArchLinux">ArchLinux</a></div><span><a href="/Archlinux/ArchLinux%E4%BD%BF%E7%94%A8%E8%AE%B0%E5%BD%95/" title="ArchLinux使用记录">ArchLinux使用记录</a></span></li></ul></div></div><div class="status"><div class="copyright">&copy; 2010 – <span itemprop="copyrightYear">2024</span> <span class="with-love"><i class="ic i-sakura rotate"></i> </span><span class="author" itemprop="copyrightHolder">陌上尘 @ 陌上尘归处</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i> </span><span title="站点总字数">50k 字</span> <span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="ic i-coffee"></i> </span><span title="站点阅读时长">46 分钟</span></div><div class="powered-by">基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL={path:"C++/C++ Primer笔记/",favicon:{show:"（●´3｀●）やれやれだぜ",hide:"(´Д｀)大変だ！"},search:{placeholder:"文章搜索",empty:"关于 「 ${query} 」，什么也没搜到",stats:"${time} ms 内找到 ${hits} 条结果"},valine:!0,fancybox:!0,copyright:'复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',ignores:[function(e){return e.includes("#")},function(e){return new RegExp(LOCAL.path+"$").test(e)}]}</script><script src="https://cdn.polyfill.io/v2/polyfill.js"></script><script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script><script src="//cdn.jsdelivr.net/gh/Yuanmxc/Blog@latest/js/app.js?v=0.2.5"></script></body></html>
