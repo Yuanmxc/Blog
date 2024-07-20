@@ -10,8 +10,140 @@
         </author>
         <description>不乱于心，不困于情；不畏将来，不念过往。</description>
         <language>zh-CN</language>
-        <pubDate>Sun, 02 Jun 2024 11:17:03 +0800</pubDate>
-        <lastBuildDate>Sun, 02 Jun 2024 11:17:03 +0800</lastBuildDate>
+        <pubDate>Sat, 20 Jul 2024 13:11:46 +0800</pubDate>
+        <lastBuildDate>Sat, 20 Jul 2024 13:11:46 +0800</lastBuildDate>
+        <item>
+            <guid isPermalink="true">http://yuanmxc.site/%E7%AC%94%E8%AE%B0/ArchLinux%20%E5%AE%89%E8%A3%85%20CUDA%20%E3%80%81TensorRT%20%20%E5%92%8CTensorRT-YOLO%20%E8%AE%B0%E5%BD%95/</guid>
+            <title></title>
+            <link>http://yuanmxc.site/%E7%AC%94%E8%AE%B0/ArchLinux%20%E5%AE%89%E8%A3%85%20CUDA%20%E3%80%81TensorRT%20%20%E5%92%8CTensorRT-YOLO%20%E8%AE%B0%E5%BD%95/</link>
+            <pubDate>Sat, 20 Jul 2024 13:11:46 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;archlinux-安装-cuda-tensorrt-和tensorrt-yolo-记录&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#archlinux-安装-cuda-tensorrt-和tensorrt-yolo-记录&#34;&gt;#&lt;/a&gt; ArchLinux 安装 CUDA 、TensorRT  和 TensorRT-YOLO 记录&lt;/h1&gt;
+&lt;h2 id=&#34;安装tensorrt-和-cuda&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#安装tensorrt-和-cuda&#34;&gt;#&lt;/a&gt; 安装 TensorRT 和 CUDA&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;根据 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2xhdWdoMTIzMjEvVGVuc29yUlQtWU9MTw==&#34;&gt;TensorRT-YOLO&lt;/span&gt; Github 页面使用教程中的 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2xhdWdoMTIzMjEvVGVuc29yUlQtWU9MTy9ibG9iL21haW4vZG9jcy9jbi9idWlsZF9hbmRfaW5zdGFsbC5tZA==&#34;&gt;快速编译安装 &lt;/span&gt; 进行，编译前首先要安装 xmake CUDA 和 TensorRT。&lt;/p&gt;
+&lt;p&gt;xmake 简单，只需要：&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;yay &lt;span class=&#34;token parameter variable&#34;&gt;-S&lt;/span&gt; xmake&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安装 CUDA 和 TensorRT&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;安装 CUDA ：&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;yay &lt;span class=&#34;token parameter variable&#34;&gt;-S&lt;/span&gt; cuda&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;版本为最新版 cuda-12.5.1-1&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在安装 TensorRT ：&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;yay &lt;span class=&#34;token parameter variable&#34;&gt;-S&lt;/span&gt; tensorrt&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;遇到错误，AUR 提供的 TensorRT 目前仍是 10.1.0.27-1 版本，而 CUDA 和 TensorRT 的版本必须是一一对应的，TensorRT 使用 CUDA 。&lt;/p&gt;
+&lt;p&gt;吐槽一下，“适配” 这件事做的不是很好，摘自 Archlinux AUR 的 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9hdXIuYXJjaGxpbnV4Lm9yZy9wYWNrYWdlcy90ZW5zb3JydA==&#34;&gt;tensorrt&lt;/span&gt; 软件包下一个老哥的评论（已置顶）：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;它（指 AUR 提供的 tensorrt 10.1.0.27-1）无法针对 cuda 12.5 构建，将 cuda 降级到 12.4.1，它将起作用。长话短说：关于这一点有两个问题。首先，tensorrt 10.0.1 显然不支持 cuda 12.5，正如您在&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL05WSURJQS9UZW5zb3JSVC90cmVlL3YxMC4wLjE/dGFiPXJlYWRtZS1vdi1maWxlI29wdGlvbmFsLS0taWYtbm90LXVzaW5nLXRlbnNvcnJ0LWNvbnRhaW5lci1zcGVjaWZ5LXRoZS10ZW5zb3JydC1nYS1yZWxlYXNlLWJ1aWxkLXBhdGg=&#34;&gt;上游文档&lt;/span&gt;中看到的那样。其次，官方仓库中提供的当前版本的 nvidia 驱动程序不支持 cuda 12.5（cuda 12.5 是在没有支持它的驱动程序的情况下推送的），您可以在&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRsYWIuYXJjaGxpbnV4Lm9yZy9hcmNobGludXgvcGFja2FnaW5nL3BhY2thZ2VzL2N1ZGEvLS9pc3N1ZXMvNw==&#34;&gt;此链接&lt;/span&gt;的 Arch Linux cuda 软件包问题页面中阅读更多详细信息。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;两个解决办法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;使用 downgrade 降级 CUDA 到 12.4.1 ：&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;sudo&lt;/span&gt; downgrade cuda&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;但是下载速度异常缓慢，几十 kb 每秒（刚开始还比较快），故放弃。&lt;/p&gt;
+&lt;p&gt;我也尝试过在英伟达官网进行下载 CUDA ，首先你必须注册一个账号，其次，官网上 CUDA 只支持特定的几个 Linux 发行版，其中刚好没有 ArchLinux（那 AUR 的软件包是从何而来的？）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;手动安装 TensorRT 的 10.2.0 版本:&lt;/p&gt;
+&lt;p&gt;在 NVIDIA 的 GitHub &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL05WSURJQS9UZW5zb3JSVA==&#34;&gt;TensorRT&lt;/span&gt; 下克隆存储库并进行安装。&lt;/p&gt;
+&lt;p&gt;原本打算在本机上进行安装，最后 cmake 时遇到报错，问 GPT 说是 gcc 版本和 CUDA 的编译器 nvcc 版本的问题，继续查。&lt;/p&gt;
+&lt;p&gt;最后发现 CUDA 12.4, 12.5 版本最大支持的 GCC 版本竟然是 13.2。查看本机的 gcc 版本为：&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;gcc &lt;span class=&#34;token parameter variable&#34;&gt;-v&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;gcc 版本 &lt;span class=&#34;token number&#34;&gt;14.1&lt;/span&gt;.1 &lt;span class=&#34;token number&#34;&gt;20240522&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;GCC&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;而其我并不是在英伟达官网找到的（没找到，理论上应该有），是 Google 之后在 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvNjYyMjQ1NC9jdWRhLWluY29tcGF0aWJsZS13aXRoLW15LWdjYy12ZXJzaW9u&#34;&gt;一篇帖子&lt;/span&gt; 下的评论找到的，这篇帖子发布于 2011 年，但我甚至能看到今年的评论。&lt;/p&gt;
+&lt;p&gt;评论的老哥给了一个 CUDA 版本和其支持的最高 GCC 版本的对应表格以及更多信息，首次评论在 Sep 23, 2017 at 14:23 ，最新编辑在 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9wb3N0cy80NjM4MDYwMS9yZXZpc2lvbnM=&#34;&gt;Jun 18 at 19:16&lt;/span&gt; ，应该是相关开发人员？&lt;/p&gt;
+&lt;p&gt;因为降级 gcc 会破坏其他依赖，无法降级，本来打算按教程使用 docker 来用的，但是这位老哥下面给出了方法，简单来说就是安装旧版本的 gcc ，之后让 CUDA 的编译器 nvcc 使用旧版本的 gcc。&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# 安装适配的旧版本 gcc&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;sudo&lt;/span&gt; pacmane &lt;span class=&#34;token parameter variable&#34;&gt;-S&lt;/span&gt; gcc13&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# 在 CUDA 文件夹中添加符号链接：&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token builtin class-name&#34;&gt;cd&lt;/span&gt; /opt/cuda&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;sudo&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;ln&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-s&lt;/span&gt; /usr/bin/gcc-13 /usr/local/cuda/bin/gcc &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;sudo&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;ln&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-s&lt;/span&gt; /usr/bin/g++-13 /usr/local/cuda/bin/g++&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;这位老哥的评论下最新的评论在 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9zdGFja292ZXJmbG93LmNvbS9xdWVzdGlvbnMvNjYyMjQ1NC9jdWRhLWluY29tcGF0aWJsZS13aXRoLW15LWdjYy12ZXJzaW9uI2NvbW1lbnQxMzcyNjE2ODVfNDYzODA2MDE=&#34;&gt;CommentedJan 22 at 12:27&lt;/span&gt; ，方法有用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在解决了各种版本问题后，我目前安装的环境如下：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;ArchLinux AUR 安装的 cuda-12.5.1-1。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在 NVIDIA 的 GitHub &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL05WSURJQS9UZW5zb3JSVC9yZWxlYXNlcw==&#34;&gt;TensorRT Releases &lt;/span&gt; 安装的 TensorRT OSS v10.2.0 存储库。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;yay 安装 cuda-12.5.1-1 时安装 cuda-cudnn-9.2.0.82-1。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;指定上面安装的 gcc13 ，让 CUDA 的编译器 nvcc 使用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;然后按照在 NVIDIA 的 GitHub  &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL05WSURJQS9UZW5zb3JSVCNidWlsZA==&#34;&gt;TensorRT Build&lt;/span&gt; 的教程进行安装。&lt;/p&gt;
+&lt;p&gt;根据上面写的推荐版本 cuda-12.5.0 + cuDNN-8.9 ，使用 downgrade 降级安装 cuDNN-8.9 版本。&lt;/p&gt;
+&lt;p&gt;最后至此开始正式 build。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;按教程安装 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9kZXZlbG9wZXIubnZpZGlhLmNvbS9kb3dubG9hZHMvY29tcHV0ZS9tYWNoaW5lLWxlYXJuaW5nL3RlbnNvcnJ0LzEwLjIuMC90YXJzL1RlbnNvclJULTEwLjIuMC4xOS5MaW51eC54ODZfNjQtZ251LmN1ZGEtMTIuNS50YXIuZ3o=&#34;&gt;TensorRT 10.2.0.19 for CUDA 12.5, Linux x86_64&lt;/span&gt; ，解压并设置  &lt;code&gt;TRT_LIBPATH&lt;/code&gt;  到～/.zshrc ，然后在 TensorRT 目录下执行下面操作：&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token builtin class-name&#34;&gt;cd&lt;/span&gt; &lt;span class=&#34;token variable&#34;&gt;$TRT_OSSPATH&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt; &lt;span class=&#34;token function&#34;&gt;mkdir&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-p&lt;/span&gt; build &lt;span class=&#34;token operator&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&#34;token builtin class-name&#34;&gt;cd&lt;/span&gt; build&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt; cmake &lt;span class=&#34;token punctuation&#34;&gt;..&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-DTRT_LIB_DIR&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token variable&#34;&gt;$TRT_LIBPATH&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-DTRT_OUT_DIR&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token variable&#34;&gt;&lt;span class=&#34;token variable&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;token builtin class-name&#34;&gt;pwd&lt;/span&gt;&lt;span class=&#34;token variable&#34;&gt;`&lt;/span&gt;&lt;/span&gt;/out&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt; &lt;span class=&#34;token function&#34;&gt;make&lt;/span&gt; -j&lt;span class=&#34;token variable&#34;&gt;&lt;span class=&#34;token variable&#34;&gt;$(&lt;/span&gt;nproc&lt;span class=&#34;token variable&#34;&gt;)&lt;/span&gt;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;cmake 遇到部分警告，make 遇到错误。而且报错似乎是代码方面的错误，多方查阅也没有解决。放弃。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;第二天，由于 NVIDIA 的 GitHub  &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL05WSURJQS9UZW5zb3JSVCNidWlsZA==&#34;&gt;TensorRT Build&lt;/span&gt; 的教程所给示例都是 Ubuntu 的，并且 英伟达官网的 CUDA 也没有提供 Archlinux 版本。怀疑是不是因为系统的原因。今天尝试降级 cuda 发现下载速度不再缓慢，于是换成上面第二个方案。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用 yay 安装 tensorRT 安装的是 tensorrt-10.1.0.27-1 版本，查看对应的 cuda 版本为 cuda-12.4.0 + cuDNN-8.9，两个都降级到对应版本。yay 安装。&lt;/p&gt;
+&lt;p&gt;有警告，单线程很慢，但是好得没报错，突然想起一个问题，在 NVIDIA 的 GitHub  &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL05WSURJQS9UZW5zb3JSVCNidWlsZA==&#34;&gt;TensorRT Build&lt;/span&gt; 的教程中让安装了 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9kZXZlbG9wZXIubnZpZGlhLmNvbS9kb3dubG9hZHMvY29tcHV0ZS9tYWNoaW5lLWxlYXJuaW5nL3RlbnNvcnJ0LzEwLjIuMC90YXJzL1RlbnNvclJULTEwLjIuMC4xOS5MaW51eC54ODZfNjQtZ251LmN1ZGEtMTIuNS50YXIuZ3o=&#34;&gt;TensorRT 10.2.0.19 for CUDA 12.5, Linux x86_64&lt;/span&gt; ，这个东西当时我在使用 yay 安装 TrnsorRT 时没有安装，也看到 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9pdm9uYmxvZy5jb20vcG9zdHMvYXJjaGxpbnV4LWluc3RhbGwtbnZpZGlhLWRyaXZlcnMv&#34;&gt;这篇帖子&lt;/span&gt; 说到这点：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;因為軟體授權限制，無法直接用 yay 裝，需要手動複製 AUR 儲存庫&lt;/li&gt;
+&lt;/ol&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;sudo&lt;/span&gt; pacman &lt;span class=&#34;token parameter variable&#34;&gt;-S&lt;/span&gt; base-devel&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;git&lt;/span&gt; clone https://aur.archlinux.org/tensorrt.git&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;ol&gt;
+&lt;li&gt;然後到&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9kZXZlbG9wZXIubnZpZGlhLmNvbS9udmlkaWEtdGVuc29ycnQtZG93bmxvYWQ=&#34;&gt; Nvidia 官網&lt;/span&gt;註冊帳號，下載 &lt;code&gt;tar.gz&lt;/code&gt;  檔 (注意版本需跟 CUDA 一致)，放到 &lt;code&gt;tensorrt&lt;/code&gt;  目錄&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;原文就是繁体，这里说的去官网注册账号下载 &lt;code&gt;tar.gz&lt;/code&gt;  檔说的就是 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9kZXZlbG9wZXIubnZpZGlhLmNvbS9kb3dubG9hZHMvY29tcHV0ZS9tYWNoaW5lLWxlYXJuaW5nL3RlbnNvcnJ0LzEwLjIuMC90YXJzL1RlbnNvclJULTEwLjIuMC4xOS5MaW51eC54ODZfNjQtZ251LmN1ZGEtMTIuNS50YXIuZ3o=&#34;&gt;TensorRT 10.2.0.19 for CUDA 12.5, Linux x86_64&lt;/span&gt; 这个东西，叫作 TensorRT GA ，在 TensorRT 安装时需要指定 TensorRT GA 发布构建路径。&lt;/p&gt;
+&lt;p&gt;所以在我在上面安装了 TensorRT GA 并将其路径添加到～/.zshrc 之后，重新使用 yay 安装就成功了（当时没有发现错误是因为没有找到 TensorRT GA 是因为什么，它没写？还是我没仔细看，绕了一大圈），后来发现 CUDA 版本也是最新版，依然可以使用 yay 安装。（也就是说不用降级也可以，高版本 CUDA 是支持低版本 TensorRT 的）。&lt;/p&gt;
+&lt;p&gt;所以总结一下 CUDA 通过 yay 直接安装，TensorRT 在通过 yay 安装之前需要先安装  &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9kZXZlbG9wZXIubnZpZGlhLmNvbS9kb3dubG9hZHMvY29tcHV0ZS9tYWNoaW5lLWxlYXJuaW5nL3RlbnNvcnJ0LzEwLjIuMC90YXJzL1RlbnNvclJULTEwLjIuMC4xOS5MaW51eC54ODZfNjQtZ251LmN1ZGEtMTIuNS50YXIuZ3o=&#34;&gt;TensorRT 10.2.0.19 for CUDA 12.5, Linux x86_64&lt;/span&gt; 并设置环境变量指定路径。之后也可以通过 yay 安装。&lt;/p&gt;
+&lt;p&gt;回顾一下 Archlinux AUR 的 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9hdXIuYXJjaGxpbnV4Lm9yZy9wYWNrYWdlcy90ZW5zb3JydA==&#34;&gt;tensorrt&lt;/span&gt; 软件包下一个老哥的评论上说明的两个问题，第一个问题：&lt;/p&gt;
+&lt;p&gt;CUDA 12.4 适用于 TensorRT 10.1.0.27。 CUDA 12.5 适用于 TensorRT 10.2.0.19。1 我这里下载的是后者，后面 &lt;code&gt;tensorrt_yolo&lt;/code&gt;  指定的路径也是 TensorRT 10.2.0.19 。&lt;/p&gt;
+&lt;p&gt;第二个问题是英伟达没有提供驱动，这个问题已经解决了，目前最新的驱动已经支持。&lt;/p&gt;
+&lt;p&gt;不管如何 CUDA 和 TensorRT 总算是装好了。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;tensorrt_yolo&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#tensorrt_yolo&#34;&gt;#&lt;/a&gt;  &lt;code&gt;tensorrt_yolo&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;&lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2xhdWdoMTIzMjEvVGVuc29yUlQtWU9MTy9ibG9iL21haW4vZG9jcy9jbi9idWlsZF9hbmRfaW5zdGFsbC5tZA==&#34;&gt;TensorRT-YOLO/docs/cn/build_and_install.md &lt;/span&gt;&lt;/p&gt;
+&lt;h2 id=&#34;deploy-编译&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#deploy-编译&#34;&gt;#&lt;/a&gt;  &lt;code&gt;Deploy&lt;/code&gt;  编译&lt;/h2&gt;
+&lt;p&gt;按照上面给的文档进行编译安装。&lt;/p&gt;
+&lt;p&gt;本机环境：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux: gcc/g++	13.3.0（不知道上面降级和使用旧的 gcc 是否有影作用）&lt;/li&gt;
+&lt;li&gt;Xmake	v2.9.3+20240624&lt;/li&gt;
+&lt;li&gt;CUDA 	12.5.1-1&lt;/li&gt;
+&lt;li&gt;TensorRT	10.1.0.27-1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;为了满足部署需求，您可以使用 Xmake 进行  &lt;code&gt;Deploy&lt;/code&gt;  编译。此过程支持动态库和静态库的编译：&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;git&lt;/span&gt; clone https://github.com/laugh12321/TensorRT-YOLO&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token builtin class-name&#34;&gt;cd&lt;/span&gt; TensorRT-YOLO&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;xmake f &lt;span class=&#34;token parameter variable&#34;&gt;-k&lt;/span&gt; shared &lt;span class=&#34;token parameter variable&#34;&gt;--tensorrt&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;C:/Program Files/NVIDIA GPU Computing Toolkit/TensorRT/v8.6.1.6&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;# xmake f -k static --tensorrt=&#34;C:/Program Files/NVIDIA GPU Computing Toolkit/TensorRT/v8.6.1.6&#34;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;xmake &lt;span class=&#34;token parameter variable&#34;&gt;-P&lt;/span&gt; &lt;span class=&#34;token builtin class-name&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-r&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;&lt;code&gt;--tensorrt=&amp;quot;C:/Program Files/NVIDIA GPU Computing Toolkit/TensorRT/v8.6.1.6&amp;quot;&lt;/code&gt;  的路径替换为自己的路径，这个路径经过我的探索，最后发现实际在 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9kZXZlbG9wZXIubnZpZGlhLmNvbS9kb3dubG9hZHMvY29tcHV0ZS9tYWNoaW5lLWxlYXJuaW5nL3RlbnNvcnJ0LzEwLjIuMC90YXJzL1RlbnNvclJULTEwLjIuMC4xOS5MaW51eC54ODZfNjQtZ251LmN1ZGEtMTIuNS50YXIuZ3o=&#34;&gt;TensorRT 10.2.0.19 for CUDA 12.5, Linux x86_64&lt;/span&gt; 下，在我这里是： &lt;code&gt;your_path/TensorRT-10.2.0.19/targets/x86_64-linux-gnu/&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&#34;编译安装-tensorrt_yolo&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#编译安装-tensorrt_yolo&#34;&gt;#&lt;/a&gt; 编译安装  &lt;code&gt;tensorrt_yolo&lt;/code&gt;&lt;/h2&gt;
+&lt;p&gt;跳过 PyPI 安装  &lt;code&gt;tensorrt_yolo&lt;/code&gt;  模块部分。&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;pip &lt;span class=&#34;token function&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;--upgrade&lt;/span&gt; build&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;python &lt;span class=&#34;token parameter variable&#34;&gt;-m&lt;/span&gt; build &lt;span class=&#34;token parameter variable&#34;&gt;--wheel&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;pip &lt;span class=&#34;token function&#34;&gt;install&lt;/span&gt; dist/tensorrt_yolo/tensorrt_yolo-4.*-py3-none-any.whl&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;上面是文档给的步骤，在 TensorRT-YOLO 下 执行，第三个路径在我这里不争取。我这里对应的文件是是： &lt;code&gt;TensorRT-YOLO/dist/tensorrt_yolo-4.0.0-py3-none-any.whl&lt;/code&gt;  ，因此路径写 &lt;code&gt; dist/tensorrt_yolo-4.0.0-py3-none-any.whl&lt;/code&gt; 。&lt;/p&gt;
+&lt;h2 id=&#34;跑模型推理示例&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#跑模型推理示例&#34;&gt;#&lt;/a&gt; 跑模型推理示例&lt;/h2&gt;
+&lt;p&gt;按照 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2xhdWdoMTIzMjEvVGVuc29yUlQtWU9MTy9ibG9iL21haW4vZGVtby9kZXRlY3QvUkVBRE1FLm1k&#34;&gt;模型推理示例&lt;/span&gt; 进行。&lt;/p&gt;
+&lt;h3 id=&#34;模型导出&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#模型导出&#34;&gt;#&lt;/a&gt; 模型导出&lt;/h3&gt;
+&lt;p&gt;首先，从 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL3VsdHJhbHl0aWNzL2Fzc2V0cy9yZWxlYXNlcy9kb3dubG9hZC92OC4yLjAveW9sb3Y4cy5wdA==&#34;&gt;YOLOv8s&lt;/span&gt; 下载 YOLOv8s 模型并保存到  &lt;code&gt;models&lt;/code&gt;  文件夹中。&lt;/p&gt;
+&lt;p&gt;注：上面是原文，这里的  &lt;code&gt;models&lt;/code&gt;  文件夹经过我实际测试，实际上是 &lt;code&gt;/TensorRT-YOLO/demo/detect/&lt;/code&gt;  下的 models 文件夹。同时工作目录现在默认也是 &lt;code&gt;/TensorRT-YOLO/demo/detect/&lt;/code&gt; 。&lt;/p&gt;
+&lt;p&gt;然后，使用以下指令将模型导出为带有 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL05WSURJQS9UZW5zb3JSVC90cmVlL21haW4vcGx1Z2luL2VmZmljaWVudE5NU1BsdWdpbg==&#34;&gt;EfficientNMS&lt;/span&gt; 插件的 ONNX 格式：&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;trtyolo &lt;span class=&#34;token builtin class-name&#34;&gt;export&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-w&lt;/span&gt; yolov8s.pt &lt;span class=&#34;token parameter variable&#34;&gt;-v&lt;/span&gt; yolov8 &lt;span class=&#34;token parameter variable&#34;&gt;-o&lt;/span&gt; models&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;执行以上命令后，将在  &lt;code&gt;models&lt;/code&gt;  文件夹下生成名为  &lt;code&gt;yolov8s.onnx&lt;/code&gt;  的文件。然后，使用  &lt;code&gt;trtexec&lt;/code&gt;  工具将 ONNX 文件转换为 TensorRT engine：&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;trtexec &lt;span class=&#34;token parameter variable&#34;&gt;--onnx&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;models/yolov8s.onnx &lt;span class=&#34;token parameter variable&#34;&gt;--saveEngine&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;models/yolov8s.engine &lt;span class=&#34;token parameter variable&#34;&gt;--fp16&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;到这里都没哟遇到什么错误，第二个命令运行时我这里看起来像卡住了一样，不过最终是跑通了的。&lt;/p&gt;
+&lt;h3 id=&#34;模型推理&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#模型推理&#34;&gt;#&lt;/a&gt; 模型推理&lt;/h3&gt;
+&lt;p&gt;这里只讲 C++ 部分。&lt;/p&gt;
+&lt;p&gt;使用 C++ 进行推理前，请确保您已按照 &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9naXRodWIuY29tL2xhdWdoMTIzMjEvVGVuc29yUlQtWU9MTy9ibG9iL21haW4vZG9jcy9jbi9idWlsZF9hbmRfaW5zdGFsbC5tZCNkZXBsb3ktJUU3JUJDJTk2JUU4JUFGJTkx&#34;&gt;Deploy 编译指南&lt;/span&gt; 对 Deploy 进行了编译。&lt;/p&gt;
+&lt;p&gt;接着，使用 xmake 将  &lt;code&gt;detect.cpp&lt;/code&gt;  编译为可执行文件：&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;xmake f &lt;span class=&#34;token parameter variable&#34;&gt;-P&lt;/span&gt; &lt;span class=&#34;token builtin class-name&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;--tensorrt&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;/path/to/your/TensorRT&#34;&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;--deploy&lt;/span&gt;&lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt;/path/to/your/TensorRT-YOLO&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;xmake &lt;span class=&#34;token parameter variable&#34;&gt;-P&lt;/span&gt; &lt;span class=&#34;token builtin class-name&#34;&gt;.&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;-r&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;注：上面是原文，这里的  &lt;code&gt;&amp;quot;/path/to/your/TensorRT&amp;quot;&lt;/code&gt;  就是前面安装的   &lt;span class=&#34;exturl&#34; data-url=&#34;aHR0cHM6Ly9kZXZlbG9wZXIubnZpZGlhLmNvbS9kb3dubG9hZHMvY29tcHV0ZS9tYWNoaW5lLWxlYXJuaW5nL3RlbnNvcnJ0LzEwLjIuMC90YXJzL1RlbnNvclJULTEwLjIuMC4xOS5MaW51eC54ODZfNjQtZ251LmN1ZGEtMTIuNS50YXIuZ3o=&#34;&gt;TensorRT 10.2.0.19 for CUDA 12.5, Linux x86_64&lt;/span&gt; 下的一个路径， &lt;code&gt;your_path/TensorRT-10.2.0.19/targets/x86_64-linux-gnu/&lt;/code&gt; 。后面的 deploy 路径就是你的 TensorRT-YOLO 路径。&lt;/p&gt;
+&lt;p&gt;在执行上述命令后，将在根目录的  &lt;code&gt;build&lt;/code&gt;  目录下生成名为  &lt;code&gt;detect&lt;/code&gt;  的可执行文件。最后，您可以直接运行可执行文件或使用  &lt;code&gt;xmake run&lt;/code&gt;  命令进行推理。使用  &lt;code&gt;--help&lt;/code&gt;  查看详细指令选项：&lt;/p&gt;
+&lt;p&gt;注；上面是原文，我这里生成的  &lt;code&gt;detect&lt;/code&gt;  的可执行文件位于 &lt;code&gt;/TensorRT-YOLO/demo/detect/build/linux/x86_64/release/&lt;/code&gt;  下，同时还有一个 &lt;code&gt;libdeploy.so&lt;/code&gt;  文件也在这个目录下。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;要加速推理过程，请使用  &lt;code&gt;--cudaGraph&lt;/code&gt;  指令，但此功能仅支持静态模型，不支持动态模型。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;xmake run &lt;span class=&#34;token parameter variable&#34;&gt;-P&lt;/span&gt; &lt;span class=&#34;token builtin class-name&#34;&gt;.&lt;/span&gt; detect &lt;span class=&#34;token parameter variable&#34;&gt;-e&lt;/span&gt; models/yolov8s.engine &lt;span class=&#34;token parameter variable&#34;&gt;-i&lt;/span&gt; images &lt;span class=&#34;token parameter variable&#34;&gt;-o&lt;/span&gt; output &lt;span class=&#34;token parameter variable&#34;&gt;-l&lt;/span&gt; labels.txt &lt;span class=&#34;token parameter variable&#34;&gt;--cudaGraph&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;注：这里命令中的路径一定要正确，工作目录在  &lt;code&gt;/TensorRT-YOLO/demo/detect/&lt;/code&gt;  下时，为：&lt;/p&gt;
+&lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;./build/linux/x86_64/release/detect &lt;span class=&#34;token parameter variable&#34;&gt;-e&lt;/span&gt; models/yolov8s.engine &lt;span class=&#34;token parameter variable&#34;&gt;-i&lt;/span&gt; images &lt;span class=&#34;token parameter variable&#34;&gt;-o&lt;/span&gt; output &lt;span class=&#34;token parameter variable&#34;&gt;-l&lt;/span&gt; labels.txt &lt;span class=&#34;token parameter variable&#34;&gt;--cudaGraph&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;使用 xmake run 的命令没去试，直接运行 detect 就行了。输出图像在 output 文件夹下，生成文本描述 &lt;code&gt;labels.txt&lt;/code&gt; 。&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://yuanmxc.site/C++/C++%E5%87%BD%E6%95%B0/</guid>
             <title>C++ 函数</title>
